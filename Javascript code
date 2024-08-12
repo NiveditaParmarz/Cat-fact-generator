@@ -1,0 +1,19 @@
+//Only the javascript implementation of a button that generates cat facts
+
+
+const factPara = document.querySelector("#fact");
+
+const URL = "https://cat-fact.herokuapp.com/facts";
+
+const button = document.querySelector("#btn");
+
+
+const getFacts = async () => {
+    console.log("meow");
+    let fact = await fetch(URL);
+    console.log(fact);
+    let data = await fact.json();
+    // console.log(data[0].text);
+    factPara.innerText = data[3].text;   //we have 5 facts from the api
+}
+button.addEventListener("click",getFacts);
